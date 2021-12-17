@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Layout } from 'antd'
+import { Layout, Menu } from 'antd'
 import styled from 'styled-components'
 import {
   CarTwoTone,
@@ -8,12 +8,17 @@ import {
   RightSquareOutlined,
 } from '@ant-design/icons'
 import Logo from '../Logo'
+import menuArr from '../data/menu'
 const { Sider } = Layout
 
 //#region CollapsedArrow
 const StyledCollapsedArrowContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  padding: 12px 0;
+  margin-top: 20px;
 `
 
 const CollapsedArrow = ({ collapse, clickEvent }) => {
@@ -49,6 +54,13 @@ const AppSider = () => {
       onBreakpoint={broken => setIsCollapse(broken)}
     >
       <Logo logo='Title' collapse={isCollapse} icon={<CarTwoTone />} />
+      <Menu theme='dark' mode='inline'>
+        {menuArr.map(({ key, option, icon }) => (
+          <Menu.Item key={key} icon={icon}>
+            {option}
+          </Menu.Item>
+        ))}
+      </Menu>
       <CollapsedArrow
         collapse={isCollapse}
         clickEvent={() => setIsCollapse(!isCollapse)}

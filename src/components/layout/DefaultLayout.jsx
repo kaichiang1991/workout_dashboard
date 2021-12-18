@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Layout } from 'antd'
 import AppSider from './AppSider'
+import AppHeader from './AppHeader'
 const { Header, Content, Footer } = Layout
 
 const StyledDefaultLayoutContainer = styled(Layout)``
@@ -12,7 +13,7 @@ const DefaultLayout = props => {
     <StyledDefaultLayoutContainer>
       <AppSider />
       <Layout>
-        <Header children={'header'} />
+        <AppHeader />
         <Content children={'content'} />
         <Footer children={'footer'} />
       </Layout>

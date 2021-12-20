@@ -5,12 +5,12 @@ import { Layout } from 'antd'
 import { useRecoilState } from 'recoil'
 import { loginState } from '../recoil'
 import { useHistory } from 'react-router-dom'
-import { LeftSquareOutlined, RightSquareOutlined } from '@ant-design/icons'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 const { Header } = Layout
 
 //#region CollapsedArrow
 const StyledCollapsedArrowContainer = styled.div`
-  font-size: 28px;
+  font-size: 20px;
   cursor: pointer;
 
   span:hover {
@@ -21,7 +21,7 @@ const StyledCollapsedArrowContainer = styled.div`
 const CollapsedArrow = ({ collapse, clickEvent }) => {
   return (
     <StyledCollapsedArrowContainer onClick={clickEvent}>
-      {collapse ? <RightSquareOutlined /> : <LeftSquareOutlined />}
+      {collapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
     </StyledCollapsedArrowContainer>
   )
 }
@@ -74,7 +74,7 @@ const StyledAppHeaderContainer = styled(Header)`
   color: #fff;
   display: flex;
   justify-content: space-between;
-  padding: 0 8px;
+  padding: 0 20px 0 8px;
 `
 
 const AppHeader = ({ collapsed, setCollapsed }) => {

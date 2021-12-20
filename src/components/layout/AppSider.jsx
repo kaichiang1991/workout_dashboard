@@ -2,38 +2,10 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Layout, Menu } from 'antd'
 import styled from 'styled-components'
-import {
-  CarTwoTone,
-  LeftSquareOutlined,
-  RightSquareOutlined,
-} from '@ant-design/icons'
+import { CarTwoTone } from '@ant-design/icons'
 import Logo from '../Logo'
 import menuArr from '../data/menu'
 const { Sider } = Layout
-
-//#region CollapsedArrow
-const StyledCollapsedArrowContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 20px;
-  padding: 12px 0;
-  margin-top: 20px;
-`
-
-const CollapsedArrow = ({ collapse, clickEvent }) => {
-  return (
-    <StyledCollapsedArrowContainer onClick={clickEvent}>
-      {collapse ? <RightSquareOutlined /> : <LeftSquareOutlined />}
-    </StyledCollapsedArrowContainer>
-  )
-}
-
-CollapsedArrow.propTypes = {
-  collapse: PropTypes.bool,
-  clickEvent: PropTypes.func,
-}
-//#endregion CollapsedArrow
 
 //#region AppSider
 const StyledAppSiderContainer = styled(Sider)`
@@ -41,19 +13,17 @@ const StyledAppSiderContainer = styled(Sider)`
   color: #fff;
 `
 
-const AppSider = () => {
-  const [isCollapse, setIsCollapse] = useState(false)
-
+const AppSider = ({ collapsed, setCollapsed }) => {
   return (
     <StyledAppSiderContainer
       breakpoint='md'
       collapsedWidth={76}
       collapsible
       trigger={null}
-      collapsed={isCollapse}
-      onBreakpoint={broken => setIsCollapse(broken)}
+      collapsed={collapsed}
+      onBreakpoint={broken => setCollapsed(broken)}
     >
-      <Logo logo='Title' collapse={isCollapse} icon={<CarTwoTone />} />
+      <Logo logo='Title' collapse={collapsed} icon={<CarTwoTone />} />
       <Menu theme='dark' mode='inline'>
         {menuArr.map(({ key, option, icon }) => (
           <Menu.Item key={key} icon={icon}>
@@ -61,15 +31,14 @@ const AppSider = () => {
           </Menu.Item>
         ))}
       </Menu>
-      <CollapsedArrow
-        collapse={isCollapse}
-        clickEvent={() => setIsCollapse(!isCollapse)}
-      />
     </StyledAppSiderContainer>
   )
 }
 
-AppSider.propTypes = {}
+AppSider.propTypes = {
+  collapsed: PropTypes.bool,
+  setCollapsed: PropTypes.func.isRequired,
+}
 //#endregion AppSider
 
 export default AppSider

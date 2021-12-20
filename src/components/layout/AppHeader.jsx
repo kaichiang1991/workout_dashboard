@@ -5,7 +5,32 @@ import { Layout } from 'antd'
 import { useRecoilState } from 'recoil'
 import { loginState } from '../recoil'
 import { useHistory } from 'react-router-dom'
+import { LeftSquareOutlined, RightSquareOutlined } from '@ant-design/icons'
 const { Header } = Layout
+
+//#region CollapsedArrow
+const StyledCollapsedArrowContainer = styled.div`
+  font-size: 28px;
+  cursor: pointer;
+
+  span:hover {
+    color: #ccc;
+  }
+`
+
+const CollapsedArrow = ({ collapse, clickEvent }) => {
+  return (
+    <StyledCollapsedArrowContainer onClick={clickEvent}>
+      {collapse ? <RightSquareOutlined /> : <LeftSquareOutlined />}
+    </StyledCollapsedArrowContainer>
+  )
+}
+
+CollapsedArrow.propTypes = {
+  collapse: PropTypes.bool,
+  clickEvent: PropTypes.func,
+}
+//#endregion CollapsedArrow
 
 //#region Login
 const StyledLoginContainer = styled.div`
@@ -47,17 +72,26 @@ const Login = () => {
 //#region AppHeader
 const StyledAppHeaderContainer = styled(Header)`
   color: #fff;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
 `
 
-const AppHeader = props => {
+const AppHeader = ({ collapsed, setCollapsed }) => {
   return (
     <StyledAppHeaderContainer>
+      <CollapsedArrow
+        collapse={collapsed}
+        clickEvent={() => setCollapsed(!collapsed)}
+      />
       <Login />
     </StyledAppHeaderContainer>
   )
 }
 
-AppHeader.propTypes = {}
+AppHeader.propTypes = {
+  collapsed: PropTypes.bool,
+  setCollapsed: PropTypes.func.isRequired,
+}
 //#endregion AppHeader
 export default AppHeader

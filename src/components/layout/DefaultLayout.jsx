@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Layout } from 'antd'
 import AppSider from './AppSider'
 import AppHeader from './AppHeader'
-const { Header, Content, Footer } = Layout
+const { Content, Footer } = Layout
 
 const StyledDefaultLayoutContainer = styled(Layout)``
 
 const DefaultLayout = props => {
+  const [siderCollapsed, setSiderCollapsed] = useState(false)
+
   return (
     <StyledDefaultLayoutContainer>
-      <AppSider />
+      <AppSider collapsed={siderCollapsed} setCollapsed={setSiderCollapsed} />
       <Layout>
-        <AppHeader />
+        <AppHeader
+          collapsed={siderCollapsed}
+          setCollapsed={setSiderCollapsed}
+        />
         <Content children={'content'} />
         <Footer children={'footer'} />
       </Layout>

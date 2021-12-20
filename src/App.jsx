@@ -1,10 +1,17 @@
 import './App.css'
 import React from 'react'
 import PropTypes from 'prop-types'
-import DefaultLayout from './components/layout/DefaultLayout'
+import { Route, Switch } from 'react-router-dom'
+import MainPage from './pages/MainPage'
+import LoginPage from './components/auth/LoginPage'
 
 const App = props => {
-  return <DefaultLayout>111</DefaultLayout>
+  return (
+    <Switch>
+      <Route path='/login' component={LoginPage} />
+      <Route exact path='/' component={MainPage} />
+    </Switch>
+  )
 }
 
 App.propTypes = {}

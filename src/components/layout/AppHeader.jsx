@@ -30,14 +30,14 @@ const Login = () => {
 
   const history = useHistory()
   useEffect(() => {
-    if (!login.account) {
+    if (!login.username) {
       history.push('/login')
     }
   }, [history, login])
 
   return (
     <StyledLoginContainer>
-      <span>歡迎回來, {login.account}</span>
+      <span>歡迎回來, {login.username}</span>
       <span onClick={() => setLoginState({})}>登出</span>
     </StyledLoginContainer>
   )

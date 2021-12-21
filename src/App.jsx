@@ -9,8 +9,8 @@ const App = props => {
   return (
     <Switch>
       <Route path='/login' component={LoginPage} />
-      <Route exact path='/' component={MainPage} />
-      <Redirect to='/' />
+      <Route path='/home' component={MainPage} />
+      <Redirect to='/home' />
     </Switch>
   )
 }

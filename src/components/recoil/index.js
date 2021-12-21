@@ -1,5 +1,5 @@
 import { HomeOutlined, UserOutlined } from '@ant-design/icons'
-import { atom } from 'recoil'
+import { atom, selector } from 'recoil'
 
 // 登入的狀態
 export const loginState = atom({
@@ -25,4 +25,22 @@ export const breadcrumRoutes = atom({
       title: 'User',
     },
   ],
+})
+
+export const breadcrumArr = atom({
+  key: 'breadcrumArr',
+  default: ['home'],
+})
+
+export const currentBreadcrumRoutes = selector({
+  key: 'currentBreadcrumRoutes',
+  get: ({ get }) => {
+    // 根據 breadcrumArr 去判斷現在的 route 有哪些
+    const routes = get(breadcrumRoutes)
+    const arr = get(breadcrumArr)
+    const resultRoutes = routes.filter(route =>
+      arr.includes(route.breadcrumbName)
+    )
+    return resultRoutes
+  },
 })

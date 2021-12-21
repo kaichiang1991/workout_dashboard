@@ -2,12 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import DefaultLayout from '../components/layout/DefaultLayout'
 import { PageHeader } from 'antd'
-import { Link } from 'react-router-dom'
+import { Switch, Link, Route } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import { breadcrumRoutes } from '../components/recoil'
+import { currentBreadcrumRoutes } from '../components/recoil'
+import Dashboard from './Dashboard'
+import UserPage from './UserPage'
 
 const MainPage = props => {
-  const routes = useRecoilValue(breadcrumRoutes)
+  const routes = useRecoilValue(currentBreadcrumRoutes)
 
   const itemRender = (route, params, routers, paths) => {
     const last = routers.indexOf(route) === routers.length - 1
@@ -32,7 +34,11 @@ const MainPage = props => {
 
   return (
     <DefaultLayout>
-      <PageHeader breadcrumb={{ itemRender, routes }} title='Title' />
+      <PageHeader breadcrumb={{ itemRender, routes }} />
+      <Switch>
+        <Route exact path='/home' component={Dashboard} />
+        <Route path='/home/user' component={UserPage} />
+      </Switch>
     </DefaultLayout>
   )
 }

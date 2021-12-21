@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Layout } from 'antd'
 import AppSider from './AppSider'
 import AppHeader from './AppHeader'
-const { Content, Footer } = Layout
+const { Content } = Layout
 
 const StyledDefaultLayoutContainer = styled(Layout)``
 
@@ -20,7 +20,6 @@ const DefaultLayout = ({ children }) => {
           setCollapsed={setSiderCollapsed}
         />
         <Content children={children} />
-        <Footer children={'footer'} />
       </Layout>
     </StyledDefaultLayoutContainer>
   )

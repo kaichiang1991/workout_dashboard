@@ -8,7 +8,7 @@ const { Content, Footer } = Layout
 
 const StyledDefaultLayoutContainer = styled(Layout)``
 
-const DefaultLayout = props => {
+const DefaultLayout = ({ children }) => {
   const [siderCollapsed, setSiderCollapsed] = useState(false)
 
   return (
@@ -19,13 +19,15 @@ const DefaultLayout = props => {
           collapsed={siderCollapsed}
           setCollapsed={setSiderCollapsed}
         />
-        <Content children={'content'} />
+        <Content children={children} />
         <Footer children={'footer'} />
       </Layout>
     </StyledDefaultLayoutContainer>
   )
 }
 
-DefaultLayout.propTypes = {}
+DefaultLayout.propTypes = {
+  children: PropTypes.node,
+}
 
 export default DefaultLayout

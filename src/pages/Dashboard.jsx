@@ -9,22 +9,7 @@ const StyledBorderdCol = styled(Col)`
 `
 
 const Dashboard = props => {
-  return (
-    <CustomRow gutter={[16, { md: 4, sm: 2 }]}>
-      <StyledBorderdCol md={12} sm={6}>
-        111
-      </StyledBorderdCol>
-      <StyledBorderdCol md={12} sm={6}>
-        222
-      </StyledBorderdCol>
-      <StyledBorderdCol md={12} sm={6}>
-        333
-      </StyledBorderdCol>
-      <StyledBorderdCol md={12} sm={6}>
-        444
-      </StyledBorderdCol>
-    </CustomRow>
-  )
+  return <CustomRow gutter={[16, { md: 4, sm: 2 }]}></CustomRow>
 }
 
 Dashboard.propTypes = {}

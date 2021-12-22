@@ -7,6 +7,7 @@ import { useRecoilValue } from 'recoil'
 import { currentBreadcrumRoutes } from '../components/recoil'
 import Dashboard from './Dashboard'
 import UserPage from './UserPage'
+import ChartPage from './ChartPage'
 
 const MainPage = props => {
   const routes = useRecoilValue(currentBreadcrumRoutes)
@@ -38,6 +39,7 @@ const MainPage = props => {
       <Switch>
         <Route exact path='/home' component={Dashboard} />
         <Route path='/home/user' component={UserPage} />
+        <Route path='/home/charts' component={ChartPage} />
       </Switch>
     </DefaultLayout>
   )

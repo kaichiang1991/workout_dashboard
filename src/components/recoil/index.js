@@ -1,4 +1,8 @@
-import { HomeOutlined, UserOutlined } from '@ant-design/icons'
+import {
+  AreaChartOutlined,
+  HomeOutlined,
+  UserOutlined,
+} from '@ant-design/icons'
 import { atom, selector } from 'recoil'
 
 // 登入的狀態
@@ -23,6 +27,12 @@ export const breadcrumRoutes = atom({
       breadcrumbName: 'user',
       icon: <UserOutlined />,
       title: 'User',
+    },
+    {
+      path: 'charts',
+      breadcrumbName: 'charts',
+      icon: <AreaChartOutlined />,
+      title: 'Charts',
     },
   ],
 })

@@ -8,10 +8,7 @@ const StyledCustomRowContainer = styled(Row)`
 `
 
 const CustomRow = props => {
-  const { children } = props
-  return (
-    <StyledCustomRowContainer {...props}>{children}</StyledCustomRowContainer>
-  )
+  return <StyledCustomRowContainer {...props} />
 }
 
 CustomRow.propTypes = {

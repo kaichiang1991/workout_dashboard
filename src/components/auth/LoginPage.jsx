@@ -58,13 +58,13 @@ const LoginPage = props => {
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
-          <a href=''>Forgot password</a>
+          <a href='/'>Forgot password</a>
         </Form.Item>
         <Form.Item>
           <Button type='primary' htmlType='submit' className='submit-button'>
             送出
           </Button>
-          Or <a href=''>註冊</a>
+          Or <a href='/'>註冊</a>
         </Form.Item>
       </StyledForm>
     </StyledLoginPageContainer>

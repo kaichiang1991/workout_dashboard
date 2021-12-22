@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import DefaultLayout from '../components/layout/DefaultLayout'
 import { PageHeader } from 'antd'
 import { Switch, Link, Route } from 'react-router-dom'

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import CustomRow from '../components/common/CustomRow'
 import { Col } from 'antd'
 import styled from 'styled-components'
@@ -34,8 +33,8 @@ const ChartPage = props => {
       <ChartCol>
         <Line {...lineConfig} data={lineData} />
       </ChartCol>
-      <ChartCol>Chart2</ChartCol>
-      <ChartCol>Chart2</ChartCol>
+      <ChartCol>Chart3</ChartCol>
+      <ChartCol>Chart4</ChartCol>
     </CustomRow>
   )
 }

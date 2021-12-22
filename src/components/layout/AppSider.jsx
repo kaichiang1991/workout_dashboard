@@ -7,7 +7,7 @@ import Logo from '../Logo'
 import menuArr from '../data/menu'
 import { Link, useRouteMatch } from 'react-router-dom'
 import { useSetRecoilState } from 'recoil'
-import { breadcrumArr, breadcrumRoutes } from '../recoil'
+import { breadcrumArr } from '../recoil'
 const { Sider } = Layout
 
 //#region AppSider

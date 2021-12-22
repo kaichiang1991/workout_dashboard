@@ -1,6 +1,5 @@
 import './App.css'
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import LoginPage from './components/auth/LoginPage'

@@ -40,7 +40,7 @@ const StyledLoginContainer = styled.div`
 
   span:last-child {
     padding-left: 8px;
-    border-left: 1px solid #fff;
+    border-left: 1px solid #000;
     cursor: pointer;
 
     :hover {
@@ -71,7 +71,8 @@ const Login = () => {
 
 //#region AppHeader
 const StyledAppHeaderContainer = styled(Header)`
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   display: flex;
   justify-content: space-between;
   padding: 0 20px 0 8px;

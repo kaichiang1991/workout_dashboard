@@ -32,7 +32,7 @@ const LoginPage = props => {
       username,
       password,
     })
-    history.push('/home')
+    history.push('/dashboard')
   }
 
   return (

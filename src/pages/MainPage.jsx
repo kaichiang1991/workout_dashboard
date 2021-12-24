@@ -3,13 +3,24 @@ import DefaultLayout from '../components/layout/DefaultLayout'
 import { PageHeader } from 'antd'
 import { Switch, Link, Route } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import { currentBreadcrumRoutes } from '../components/recoil'
+import { breadcrumbRoutes, currentBreadcrumbRoutes } from '../components/recoil'
 import Dashboard from './Dashboard'
 import UserPage from './UserPage'
 import ChartPage from './ChartPage'
+import { useLocation } from 'react-router-dom'
+
+const useBreadcrumRoute = () => {
+  const { pathname } = useLocation()
+  const nameArr = pathname.split('/').filter(name => name !== '')
+  const origRoutes = useRecoilValue(breadcrumbRoutes)
+  const currentRoutes = origRoutes.filter(
+    route => nameArr.includes(route.path.split('/')[1]) || route.path === '/'
+  )
+  return currentRoutes
+}
 
 const MainPage = props => {
-  const routes = useRecoilValue(currentBreadcrumRoutes)
+  const routes = useBreadcrumRoute()
 
   const itemRender = (route, params, routers, paths) => {
     const last = routers.indexOf(route) === routers.length - 1
@@ -36,9 +47,9 @@ const MainPage = props => {
     <DefaultLayout>
       <PageHeader breadcrumb={{ itemRender, routes }} />
       <Switch>
-        <Route exact path='/home' component={Dashboard} />
-        <Route path='/home/user' component={UserPage} />
-        <Route path='/home/charts' component={ChartPage} />
+        <Route exact path='/dashboard' component={Dashboard} />
+        <Route path='/dashboard/user' component={UserPage} />
+        <Route path='/dashboard/charts' component={ChartPage} />
       </Switch>
     </DefaultLayout>
   )
